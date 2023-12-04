@@ -1,5 +1,7 @@
 ﻿using Advents;
 
-//AdventOne.Solution();
-//AdventOnePartTwo.Solution();
-AdventTwo.Solution();
+// AdventOne.Solution();
+// AdventOnePartTwo.Solution();
+// AdventTwo.Solution();
+// AdventTwoPartTwo.Solution();
+AdventThree.Solution();
