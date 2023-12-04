@@ -38,7 +38,12 @@ namespace Advents
                         if (rangeList[0].TryGetValue(kvp.Key, out int rangeValue) && kvp.Value > rangeValue)
                         {
                             playable = false;
+                            break;
                         }
+                    }
+                    if (!playable)
+                    {
+                        break;
                     }
                 }
                 if (playable)
