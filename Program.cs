@@ -1,3 +1,4 @@
 ﻿using Advents;
 
-AdventOne.Solution();
+// AdventOne.Solution();
+AdventTwo.Solution();

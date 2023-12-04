@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Joran Schols\\Desktop\\advent\\advent.csproj": {}
+    "C:\\repos\\CodeAdvent2023\\CodeAdvent2023\\advent.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Joran Schols\\Desktop\\advent\\advent.csproj": {
+    "C:\\repos\\CodeAdvent2023\\CodeAdvent2023\\advent.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Joran Schols\\Desktop\\advent\\advent.csproj",
+        "projectUniqueName": "C:\\repos\\CodeAdvent2023\\CodeAdvent2023\\advent.csproj",
         "projectName": "advent",
-        "projectPath": "C:\\Users\\Joran Schols\\Desktop\\advent\\advent.csproj",
-        "packagesPath": "C:\\Users\\Joran Schols\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Joran Schols\\Desktop\\advent\\obj\\",
+        "projectPath": "C:\\repos\\CodeAdvent2023\\CodeAdvent2023\\advent.csproj",
+        "packagesPath": "C:\\Users\\Joran\\.nuget\\packages\\",
+        "outputPath": "C:\\repos\\CodeAdvent2023\\CodeAdvent2023\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Joran Schols\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Joran\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

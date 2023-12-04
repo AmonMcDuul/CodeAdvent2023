@@ -3,7 +3,7 @@ using System.IO;
 
 namespace Advents
 {
-    public class AdventOne
+    public class AdventTwo
     {
         public static void Solution()
         {
@@ -17,12 +17,11 @@ namespace Advents
                 int? last = null;
                 int? tempFirst = null;
                 int? tempLast = null;
-
-                for (int i = 0; i <= line.Length / 2 + 1; i++)
+                var replacedLine = ReplaceWordsWithNumbers(line);
+                for (int i = 0; i <= replacedLine.Length / 2 + 1; i++)
                 {
-                    char firstChar = line[i];
-                    char lastChar = line[line.Length - 1 - i];
-
+                    char firstChar = replacedLine[i];
+                    char lastChar = replacedLine[replacedLine.Length - 1 - i];
                     updateNumbers();
 
                     if (first != null && last != null)
@@ -31,7 +30,7 @@ namespace Advents
                         break;
                     }
 
-                    if (i >= line.Length / 2 + 1)
+                    if (i >= replacedLine.Length / 2 + 1)
                     {
                         if (last == null)
                         {
@@ -73,6 +72,40 @@ namespace Advents
                             last = int.Parse(lastChar.ToString());
                         }
                     }
+                }
+                string ReplaceWordsWithNumbers(string input)
+                {
+                    var doubleWordsToNumber = new Dictionary<string, string>
+                    {
+                        {"twone", "21"},
+                        {"eightwo", "82"},
+                        {"eighthree", "83"},
+                        {"oneight", "18"},
+                        {"nineight", "98"}
+                    };
+                    var wordToNumber = new Dictionary<string, string>
+                    {
+                        {"one", "1"},
+                        {"two", "2"},
+                        {"three", "3"},
+                        {"four", "4"},
+                        {"five", "5"},
+                        {"six", "6"},
+                        {"seven", "7"},
+                        {"eight", "8"},
+                        {"nine", "9"}
+                    };
+                    foreach (var word in doubleWordsToNumber)
+                    {
+                        input = input.Replace(word.Key, word.Value);
+                    }
+
+                    foreach (var word in wordToNumber)
+                    {
+                        input = input.Replace(word.Key, word.Value);
+                    }
+
+                    return input;
                 }
             }
             Console.WriteLine($"Sum of all: {sumOfAll}");

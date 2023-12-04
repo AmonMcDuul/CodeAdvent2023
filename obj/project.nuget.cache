@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4+oyuONxaSDyp8D2sndOmRcysm9SbXKpr9wxU4Kb17ezKZIZjsX6cLU6V8gXcoqupIhcoZxbVyUJ648jtMbalA==",
+  "dgSpecHash": "H2byf60OMRryy/aXYNuWijbKwc4tPstiNUuxXTooY9iCAxiPoU4n2rS9ARLOLeAzozDOR3AfwsS0iil6oEIPPw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Joran Schols\\Desktop\\advent\\advent.csproj",
+  "projectFilePath": "C:\\repos\\CodeAdvent2023\\CodeAdvent2023\\advent.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
