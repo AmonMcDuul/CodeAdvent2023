@@ -75,16 +75,14 @@ namespace Advents
                 }
                 string ReplaceWordsWithNumbers(string input)
                 {
-                    var doubleWordsToNumber = new Dictionary<string, string>
+
+                    var wordToNumber = new Dictionary<string, string>
                     {
                         {"twone", "21"},
                         {"eightwo", "82"},
                         {"eighthree", "83"},
                         {"oneight", "18"},
-                        {"nineight", "98"}
-                    };
-                    var wordToNumber = new Dictionary<string, string>
-                    {
+                        {"nineight", "98"},
                         {"one", "1"},
                         {"two", "2"},
                         {"three", "3"},
@@ -95,10 +93,6 @@ namespace Advents
                         {"eight", "8"},
                         {"nine", "9"}
                     };
-                    foreach (var word in doubleWordsToNumber)
-                    {
-                        input = input.Replace(word.Key, word.Value);
-                    }
 
                     foreach (var word in wordToNumber)
                     {
