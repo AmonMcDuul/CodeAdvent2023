@@ -1,0 +1,14 @@
+C:\Users\Joran Schols\Desktop\advent\bin\Debug\net8.0\advent.exe
+C:\Users\Joran Schols\Desktop\advent\bin\Debug\net8.0\advent.deps.json
+C:\Users\Joran Schols\Desktop\advent\bin\Debug\net8.0\advent.runtimeconfig.json
+C:\Users\Joran Schols\Desktop\advent\bin\Debug\net8.0\advent.dll
+C:\Users\Joran Schols\Desktop\advent\bin\Debug\net8.0\advent.pdb
+C:\Users\Joran Schols\Desktop\advent\obj\Debug\net8.0\advent.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Joran Schols\Desktop\advent\obj\Debug\net8.0\advent.AssemblyInfoInputs.cache
+C:\Users\Joran Schols\Desktop\advent\obj\Debug\net8.0\advent.AssemblyInfo.cs
+C:\Users\Joran Schols\Desktop\advent\obj\Debug\net8.0\advent.csproj.CoreCompileInputs.cache
+C:\Users\Joran Schols\Desktop\advent\obj\Debug\net8.0\advent.dll
+C:\Users\Joran Schols\Desktop\advent\obj\Debug\net8.0\refint\advent.dll
+C:\Users\Joran Schols\Desktop\advent\obj\Debug\net8.0\advent.pdb
+C:\Users\Joran Schols\Desktop\advent\obj\Debug\net8.0\advent.genruntimeconfig.cache
+C:\Users\Joran Schols\Desktop\advent\obj\Debug\net8.0\ref\advent.dll

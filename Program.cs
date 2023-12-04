@@ -1,0 +1,3 @@
+﻿using Advents;
+
+AdventOne.Solution();
