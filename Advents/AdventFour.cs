@@ -14,7 +14,7 @@ namespace Advents
                 Match match = Regex.Match(line, @"Card\s*(\d+):");
                 string cleanLine = line.Replace(match.Value, "").Replace(":", "").Trim();
                 cleanLine = cleanLine.Replace(" ", ",");
-
+                cleanLine = cleanLine.Replace(",,", ",");
                 (List<int> scratchCard, List<int> numbersToCheck) = SeparateCards(cleanLine);
 
                 result += CalculateResults(scratchCard, numbersToCheck);
@@ -23,39 +23,9 @@ namespace Advents
         }
         public static (List<int>, List<int>) SeparateCards(string cleanLine)
         {
-            List<int> scratchCard = [];
-            List<int> numbersToCheck = [];
-            string tempNum = "";
-            bool toggle = false;
-            for (int i = 0; i <= cleanLine.Length - 1; i++)
-            {
-                if (cleanLine[i] == '|')
-                {
-                    toggle = true;
-                    continue;
-                }
-                if (cleanLine[i] != ',')
-                {
-                    tempNum += cleanLine[i];
-                }
-                if (cleanLine[i] == ',' && tempNum != "")
-                {
-                    if (!toggle)
-                    {
-                        scratchCard.Add(int.Parse(tempNum));
-                    }
-                    if (toggle)
-                    {
-                        numbersToCheck.Add(int.Parse(tempNum));
-                    }
-                    tempNum = "";
-                }
-                if (i == cleanLine.Length - 1)
-                {
-                    numbersToCheck.Add(int.Parse(tempNum));
-                    break;
-                }
-            }
+            string[] parts = cleanLine.Split('|');
+            List<int> scratchCard = parts[0].Trim(',').Split(',').Select(int.Parse).ToList();
+            List<int> numbersToCheck = parts[1].Trim(',').Split(',').Select(int.Parse).ToList();
             return (scratchCard, numbersToCheck);
         }
 
@@ -66,14 +36,7 @@ namespace Advents
             {
                 if (numbersToCheck.Contains(i))
                 {
-                    if (result == 0)
-                    {
-                        result = 1;
-                    }
-                    else
-                    {
-                        result *= 2;
-                    }
+                    result = (result == 0) ? 1 : result * 2;
                 }
             }
             return result;
