@@ -1,21 +1,40 @@
 namespace Advents
 {
-    public class AdventThree
+    public class AdventThreePartTwo
     {
         public static void Solution()
         {
             string filePath = "./Inputs/adventThreeInput.txt";
             string[] lines = File.ReadAllLines(filePath);
+
             char[,] matrix = CreateMatrix(lines);
 
-            var results = CheckIfTouched(matrix);
-            int sumOfAll = 0;
+            int rows = matrix.GetLength(0);
+            int cols = matrix.GetLength(1);
 
-            foreach (var result in results)
+            List<List<string>> connectedNumbers = new List<List<string>>();
+
+            for (int i = 0; i < rows; i++)
             {
-                sumOfAll += int.Parse(result);
+                for (int j = 0; j < cols; j++)
+                {
+                    if (matrix[i, j] == '*')
+                    {
+                        List<string> numbers = ExtractConnectedNumbers(matrix, i, j);
+                        if (numbers.Count == 2)
+                        {
+                            connectedNumbers.Add(numbers);
+                        }
+                    }
+                }
             }
-            System.Console.WriteLine($"sum of all: {sumOfAll}");
+
+            int result = 0;
+            foreach (var numbers in connectedNumbers)
+            {
+                result += int.Parse(numbers[0]) * int.Parse(numbers[1]);
+            }
+            System.Console.WriteLine($"Result: {result}");
         }
 
         static char[,] CreateMatrix(string[] lines)
@@ -34,47 +53,16 @@ namespace Advents
             return matrix;
         }
 
-        static List<string> CheckIfTouched(char[,] matrix)
-        {
-            int rows = matrix.GetLength(0);
-            int cols = matrix.GetLength(1);
-
-            bool isNewNumber = true;
-            List<string> results = new List<string>();
-
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < cols; j++)
-                {
-                    if (char.IsDigit(matrix[i, j]))
-                    {
-                        if (IsTouched(matrix, i, j))
-                        {
-                            string touchedNumber = ExtractNumber(matrix, i, j);
-                            if (isNewNumber)
-                            {
-                                results.Add(touchedNumber);
-                            }
-                            isNewNumber = false;
-                        }
-                    }
-                    else
-                    {
-                        isNewNumber = true;
-                    }
-                }
-            }
-
-            return results;
-        }
-
-        static bool IsTouched(char[,] matrix, int row, int col)
+        static List<string> ExtractConnectedNumbers(char[,] matrix, int row, int col)
         {
             int[] dx = { -1, -1, -1, 0, 0, 1, 1, 1 };
             int[] dy = { -1, 0, 1, -1, 1, -1, 0, 1 };
-            List<char> charsToCheck = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.'];
+
             int rows = matrix.GetLength(0);
             int cols = matrix.GetLength(1);
+
+            string currentNumber = "";
+            List<string> connectedNumbers = new List<string>();
 
             for (int k = 0; k < 8; k++)
             {
@@ -83,13 +71,22 @@ namespace Advents
 
                 if (newRow >= 0 && newRow < rows && newCol >= 0 && newCol < cols)
                 {
-                    if (!charsToCheck.Contains(matrix[newRow, newCol]))
+                    if (char.IsDigit(matrix[newRow, newCol]))
                     {
-                        return true;
+                        string number = ExtractNumber(matrix, newRow, newCol);
+                        if (number != currentNumber)
+                        {
+                            connectedNumbers.Add(number);
+                            currentNumber = number;
+                        }
+                    }
+                    else
+                    {
+                        currentNumber = "";
                     }
                 }
             }
-            return false;
+            return connectedNumbers;
         }
 
         static string ExtractNumber(char[,] matrix, int row, int col)
