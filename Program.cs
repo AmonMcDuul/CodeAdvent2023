@@ -6,4 +6,5 @@
 // AdventTwoPartTwo.Solution();
 // AdventThree.Solution();
 // AdventThreePartTwo.Solution();
-AdventFour.Solution();
+// AdventFour.Solution();
+AdventFourPartTwo.Solution();

@@ -2,7 +2,7 @@ using System.Text.RegularExpressions;
 
 namespace Advents
 {
-    public class AdventFour
+    public class AdventFourPartTwo
     {
         public static void Solution()
         {
