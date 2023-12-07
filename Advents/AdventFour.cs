@@ -11,18 +11,16 @@ namespace Advents
             int result = 0;
             foreach (string line in lines)
             {
-                Match match = Regex.Match(line, @"Card\s*(\d+):");
-                string cleanLine = line.Replace(match.Value, "").Replace(":", "").Trim();
-                cleanLine = cleanLine.Replace(" ", ",");
-                cleanLine = cleanLine.Replace(",,", ",");
-                (List<int> scratchCard, List<int> numbersToCheck) = SeparateCards(cleanLine);
-
+                (List<int> scratchCard, List<int> numbersToCheck) = SeparateCards(line);
                 result += CalculateResults(scratchCard, numbersToCheck);
             }
             System.Console.WriteLine($"Result: {result}");
         }
-        public static (List<int>, List<int>) SeparateCards(string cleanLine)
+
+        public static (List<int>, List<int>) SeparateCards(string line)
         {
+            Match match = Regex.Match(line, @"Card\s*(\d+):");
+            string cleanLine = line.Replace(match.Value, "").Replace(":", "").Replace(" ", ",").Replace(",,", ",").Trim();
             string[] parts = cleanLine.Split('|');
             List<int> scratchCard = parts[0].Trim(',').Split(',').Select(int.Parse).ToList();
             List<int> numbersToCheck = parts[1].Trim(',').Split(',').Select(int.Parse).ToList();
