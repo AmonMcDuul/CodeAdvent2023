@@ -1,6 +1,6 @@
 namespace Advents
 {
-    public class AdventThree
+    public class Advent_3a
     {
         public static void Solution()
         {
