@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 
 namespace Advents
 {
@@ -8,30 +9,60 @@ namespace Advents
     {
         public static void Solution()
         {
-            string filePath = "./Inputs/advent_5_input.txt";
+            string filePath = "C:\\repos\\CodeAdvent2023\\CodeAdvent2023\\Inputs\\advent_5_input.txt";
             string[] lines = File.ReadAllLines(filePath);
-            List<int> seeds = new List<int>();
-
-            bool seedsBool = false;
-
-            foreach (string line in lines)
+            List<long> seeds = ExtractSeeds(lines[0]);
+            long lowestNumber = 999999999;
+            foreach (long seed in seeds)
             {
-                if (!string.IsNullOrWhiteSpace(line))
+                long result = CalculateSeed(seed, lines);
+                if (result < lowestNumber)
+                {
+                    lowestNumber = result;
+                }
+            }
+            System.Console.WriteLine(lowestNumber);
+        }
+
+        public static long CalculateSeed(long seed, string[] lines)
+        {
+            Dictionary<long, long> resultDict = new Dictionary<long, long>();
+            bool flag = true;
+            long result = seed;
+            for (long i = 2; i < lines.Length; i++)
+            {
+                if (string.IsNullOrWhiteSpace(lines[i]))
+                {
+                    flag = true;
+                    continue;
+                }
+                if (lines[i].Contains(':'))
                 {
                     continue;
                 }
-                System.Console.WriteLine(line);
-                if (seedsBool)
+                var cleanLine = lines[i].Replace(" ", ",");
+                List<long> newLine = cleanLine.Trim(',').Split(',').Select(long.Parse).ToList();
+                long newLocation = 0;
+
+                if (result >= newLine[1] && result < newLine[1] + newLine[2])
                 {
-                    var cleanLine = line.Replace(" ", ",");
-                    seeds = cleanLine.Trim(',').Split(',').Select(int.Parse).ToList();
-                    seedsBool = false;
-                }
-                if (line.Contains("seeds:"))
-                {
-                    seedsBool = true;
+                    newLocation = result - (newLine[1] - newLine[0]);
+                    System.Console.WriteLine($"id {i} result {result}, new {newLocation}");
+                    if (flag == true)
+                    {
+                        result = newLocation;
+                        flag = false;
+                    }
                 }
             }
+            return result;
+        }
+
+        public static List<long> ExtractSeeds(string line)
+        {
+            var cleanLine = line.Replace("seeds: ", "").Replace(" ", ",");
+            List<long> seeds = cleanLine.Trim(',').Split(',').Select(long.Parse).ToList();
+            return seeds;
         }
     }
 }
